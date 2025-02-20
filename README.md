@@ -199,7 +199,7 @@ FROM
 
 ```
 
-![Row count check](assets/images/row_count_check.png)
+![Row count check](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/row%20count%20check.png?raw=true)
 
 ## Column count check
 ### SQL query
@@ -211,7 +211,7 @@ FROM
 WHERE 
 	TABLE_NAME = 'view_uk_youtubers_2024'
 ```
-![Column count check](assets/images/column_count_check.png)
+![Column count check](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/column%20count%20check.png?raw=true)
 
 ## Data type check
 ### SQL query
@@ -224,7 +224,7 @@ FROM
 WHERE 
 	TABLE_NAME = 'view_uk_youtubers_2024'
 ```
-![Data type check](assets/images/data_type_check.png)
+![Data type check](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/data%20type%20check.png?raw=true)
 
 ## Duplicate records check
 ### SQL query
@@ -238,7 +238,7 @@ GROUP BY
 HAVING 
 	COUNT(*) > 1
 ```
-![Duplicate records check](assets/images/duplicate_records_check.png)
+![Duplicate records check](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/duplicate%20records%20check.png?raw=true)
 
 ## DAX Measures
 
@@ -306,5 +306,336 @@ Views per Subscriber =
 
 ## Findings
 
-### 1. Who are the top 10 Youtubers with the most subscribers ?
+### 1. Top 10 Youtubers with the most subscribers
 
+| Rank | Channel Name     | Subscribers (M) |
+|------|------------------|-----------------|
+| 1    |NoCopyrightSounds | 33.9	    |
+| 2    |DanTDM		  | 29.2	    |
+| 3    |Dan Rhodes	  | 27.0	    |
+| 4    |Missa Katy	  | 25.3	    |
+| 5    |KSI		  | 25.0	    |
+| 6    |MisterMax	  | 24.9	    |
+| 7    |Dua Lipa	  | 24.0	    |
+| 8    |Jelly		  | 23.5	    |
+| 9    |colinfurze	  | 20.6	    |
+| 10   |Ali-A		  | 19.5	    |
+
+
+### 2. Top 3 channels with most uploaded videos
+
+| Rank | Channel Name    | Videos Uploaded |
+|------|-----------------|-----------------|
+| 1    | Boomerage UK    | 186,852         |
+| 2    | More Emily      | 58,052          |
+| 3    | Sing King       | 43,290          |
+
+
+### 3. Top 3 channels with most views
+
+| Rank | Channel Name | Total Views (B) |
+|------|--------------|-----------------|
+| 1    | DanTDM       | 20.09           |
+| 2    | Dan Rhodes   | 19.13           |
+| 3    | Mister Max   | 16.40           |
+
+
+### 4. Top 3 channels with highest average views per video
+
+
+| Channel Name | Average Views per Video (M) |
+|--------------|-----------------|
+| 24 News HD   | 346.37          |
+| Slogo        | 62.84           |
+| Dua Lipa     | 45.91           |
+
+
+### 5. Top 3 channels with the highest views per subscriber ratio
+
+| Rank | Channel Name    | Views per Subscriber        |
+|------|-----------------|---------------------------- |
+| 1    | Dumori Bay      | 1205.86                     |
+| 2    | ARPO The Robot	 | 1064.06                     |
+| 3    | Awakening Music | 1043.18                     |
+
+
+### 6. Top 3 channels with the highest subscriber engagement rate per video uploaded
+
+| Rank | Channel Name    | Subscriber Engagement Rate  |
+|------|-----------------|---------------------------- |
+| 1    | 24 News HD      | 351,500.00                  |
+| 2    | Slogo	         | 111,458.33                  |
+| 3    | Dua Lipa        | 77,922.08                   |
+
+
+
+### Notes
+
+For this analysis, the priority is analyzing the expected ROI (net profit) for the marketing client based on three different metrics such as the YouTube channels with the most 
+
+- subscribers
+- total views
+- videos uploaded
+
+
+## Validation checks (SQL/Excel)
+
+
+### 1. Youtubers with the most subscribers 
+
+#### Calculation breakdown
+
+Campaign idea = product placement 
+
+1. NoCopyrightSounds 
+
+- Average views per video = 6.05 million
+- Product cost = $5
+- Potential units sold per video = 6.05 million x 2% conversion rate = 121,000 units sold
+- Potential revenue per video = 121,000 x $5 = $605,000
+- Campaign cost (one-time fee) = $50,000
+- **Net profit = $605,000 - $50,000 = $555,000**
+
+2. DanTDM
+
+- Average views per video = 5.37 million
+- Product cost = $5
+- Potential units sold per video = 5.37 million x 2% conversion rate = 107,400 units sold
+- Potential revenue per video = 107,400 x $5 = $537,000
+- Campaign cost (one-time fee) = $50,000
+- **Net profit = $537,000 - $50,000 = $487,000**
+
+3. Dan Rhodes
+
+- Average views per video = 11.40 million
+- Product cost = $5
+- Potential units sold per video = 11.40 million x 2% conversion rate = 228,000 units sold
+- Potential revenue per video = 228,000 x $5 = $1,140,000
+- Campaign cost (one-time fee) = $50,000
+- **Net profit = $1,140,000 - $50,000 = $1,090,000**
+
+
+Best option from category: Dan Rhodes
+
+
+### SQL query
+
+```SQL
+/* 
+1. Define the variables
+2. Create a CTE that rounds the average views per video
+3. Select the columns that are required for the analysis
+4. Filter the results by the Youtube channels with the highest subscriber bases
+5. Order by net profit (from highest to lowest)
+*/
+
+-- 1. 
+DECLARE @conversionRate FLOAT = 0.02;   -- The conversion rate @ 2%
+DECLARE @productCost MONEY = 5.0;	-- The product cost @ $5
+DECLARE @campaignCost MONEY = 50000;	-- The campaign cost @ $50,000
+
+-- 2.
+WITH ChannelData AS (
+	SELECT
+		channel_name,
+		total_views,
+		total_videos,
+		ROUND(CAST(total_views AS FLOAT)/total_videos, -4) AS rounded_avg_views_per_video 
+	FROM 
+		view_uk_youtubers_2024
+)
+
+-- 3.
+SELECT
+	channel_name,
+	rounded_avg_views_per_video,
+	(rounded_avg_views_per_video*@conversionRate) AS potential_units_sold_per_video,
+	(rounded_avg_views_per_video*@conversionRate*@productCost) AS potential_revenue_per_video,
+	(rounded_avg_views_per_video*@conversionRate*@productCost)-@campaignCost AS net_profit
+
+FROM 
+	ChannelData
+
+-- 4.
+WHERE 
+	channel_name IN ('NoCopyrightSounds', 'DanTDM' , 'Dan Rhodes')
+
+-- 5.
+ORDER BY
+	net_profit DESC;
+```
+#### Output
+![Most subsc](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/ROI_Youtubers%20with%20the%20highest%20subscribers.png?raw=true) 
+
+
+### 2. Youtubers with the most videos uploaded
+
+#### Calculation breakdown 
+
+Campaign idea = sponsored video series  
+
+1. Boomerang UK
+
+- Average views per video = 0.02 million
+- Product cost = $5
+- Potential units sold per video = 20,000 x 2% conversion rate = 400 units sold
+- Potential revenue per video = 400 x $5= $2,000
+- Campaign cost (11-videos @ $5,000 each) = $55,000
+- **Net profit = $2000 - $55,000 = -$53,000 (potential loss)**
+
+2. More Emily
+
+- Average views per video = 0.08 million
+- Product cost = $5
+- Potential units sold per video = 0.08 million x 2% conversion rate = 1600 units sold
+- Potential revenue per video = 1600 x $5 = $8,000
+- Campaign cost (11-videos @ $5,000 each) = $55,000
+- **Net profit = $8000 - $55,000 = -$47,000 (potential loss)**
+
+3. Sing King
+
+- Average views per video = 0.12 million
+- Product cost = $5
+- Potential units sold per video = 0.12 million x 2% conversion rate = 2400 units sold
+- Potential revenue per video = 2400 x $5 = $12,000
+- Campaign cost (11-videos @ $5,000 each) = $55,000
+- **Net profit = $12,000 - $55,000 = -$43,000 (potential loss)**
+
+
+Best option from catgegory: Sing King
+
+
+### SQL query
+```SQL
+-- 1. 
+DECLARE @conversionRate FLOAT = 0.02;			-- The conversion rate @ 2%
+DECLARE @productCost MONEY = 5.0;				-- The product cost @ $5
+DECLARE @campaignCostPerVideo FLOAT = 5000.0;   -- The campaign cost per video @ $5,000
+DECLARE @numberOfVideos INT = 11;               -- The number of videos (11)
+
+
+
+-- 2.
+WITH ChannelData AS (
+	SELECT
+		channel_name,
+		total_views,
+		total_videos,
+		ROUND(CAST(total_views AS FLOAT)/total_videos, -4) AS rounded_avg_views_per_video 
+	FROM 
+		view_uk_youtubers_2024
+)
+
+
+-- 3.
+SELECT
+	channel_name,
+	rounded_avg_views_per_video,
+	(rounded_avg_views_per_video*@conversionRate) AS potential_units_sold_per_video,
+	(rounded_avg_views_per_video*@conversionRate*@productCost) AS potential_revenue_per_video,
+	(rounded_avg_views_per_video*@conversionRate*@productCost)-(@campaignCostPerVideo*@numberOfVideos) AS net_profit
+
+FROM 
+	ChannelData
+
+
+-- 4.
+WHERE 
+	channel_name IN ('Boomerang UK' , 'More Emily' , 'Sing King')
+
+
+-- 5.
+ORDER BY 
+	net_profit DESC
+```
+#### Output
+![ROI of Youtubers with most uploaded videos](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/ROI_Youtubers%20with%20most%20videos%20uploaded.png?raw=true)
+
+
+### 3. Youtubers with the most views
+
+#### Calculation breakdown
+
+Campaign idea = Influencer marketing 
+
+a. DanTDM
+
+- Average views per video = 5.37 million
+- Product cost = $5
+- Potential units sold per video = 5.37 million x 2% conversion rate = 107,400 units sold
+- Potential revenue per video = 107,400 x $5 = $537,000
+- Campaign cost (3-month contract) = $130,000
+- **Net profit = $537,000 - $130,000 = $407,000**
+
+b. Dan Rhodes
+
+- Average views per video = 11.40 million
+- Product cost = $5
+- Potential units sold per video = 11.40 million x 2% conversion rate = 228,000 units sold
+- Potential revenue per video = 228,000 x $5 = $1,140,000
+- Campaign cost (3-month contract) = $130,000
+- **Net profit = $1,140,000 - $130,000 = $1,010,0000**
+
+c. Mister Max
+
+- Average views per video = 13.85 million
+- Product cost = $5
+- Potential units sold per video = 13.85 million x 2% conversion rate = 277,000 units sold
+- Potential revenue per video = 277,000 x $5 = $1,385,000
+- Campaign cost (3-month contract) = $130,000
+- **Net profit = $1,385,000 - $130,000 = $1,255,000**
+
+
+Best option from category: Mister Max
+
+
+### SQL query
+```SQL
+-- 1.
+DECLARE @conversionRate FLOAT = 0.02;	 -- The conversion rate @ 2%
+DECLARE @productCost MONEY = 5.0;		 -- The product cost @ $5
+DECLARE @campaignCost FLOAT = 13000.0;   -- The campaign cost per video @ $13,000
+
+
+-- 2.
+/* Creating a CTE to only use the columns that are needed and to perform the rounding */
+WITH ChannelData AS (
+	SELECT
+		channel_name,
+		total_views,
+		total_videos,
+		ROUND(CAST(total_views AS FLOAT)/total_videos, -4) AS rounded_avg_views_per_video 
+	FROM 
+		view_uk_youtubers_2024
+)
+
+
+-- 3.
+SELECT
+	channel_name,
+	rounded_avg_views_per_video,
+	(rounded_avg_views_per_video*@conversionRate) AS potential_units_sold_per_video,
+	(rounded_avg_views_per_video*@conversionRate*@productCost) AS potential_revenue_per_video,
+	(rounded_avg_views_per_video*@conversionRate*@productCost)-(@campaignCost) AS net_profit
+
+FROM 
+	ChannelData
+
+
+-- 4.
+WHERE channel_name IN ('DanTDM' , 'Dan Rhodes' , 'Mister Max')
+
+
+-- 5.
+ORDER BY net_profit DESC;
+```
+
+#### Output
+![ROI of Youtubers with most views](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/ROI_Youtubers%20with%20most%20views.png?raw=true)
+
+
+## Discovery
+
+What was discovered
+
+1. 
