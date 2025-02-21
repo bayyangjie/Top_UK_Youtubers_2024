@@ -638,4 +638,7 @@ ORDER BY net_profit DESC;
 
 What was discovered
 
-1. 
+1. NoCopyRightSounds, Dan Rhodes and DanTDM are the channels with the most subscribers in the UK
+2. Boomerang UK, More Emily and Sing King are the channels with the most uploaded videos
+3. DanTDM, DanRhodes and Mister Max are the channels with the most views
+4. 
