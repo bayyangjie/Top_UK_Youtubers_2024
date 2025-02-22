@@ -180,9 +180,25 @@ FROM
 ### Create the SQL view
 
 ```
+/*
+# 1. Create a view to store the transformed data
+# 2. Cast the extracted channel name as VARCHAR(100)
+# 3. Select the required columns from the top_uk_youtubers_2024 SQL table 
+*/
 
+-- 1.
+CREATE VIEW view_uk_youtubers_2024 AS
 
+-- 2.
+SELECT
+	CAST(SUBSTRING(NOMBRE, 1, CHARINDEX('@', NOMBRE) -1) AS VARCHAR(100)) as channel_name,  /* '-1' is to exclude the @ symbol from the extracted substring */
+	total_subscribers,
+	total_views,
+	total_videos
 
+-- 3.
+FROM
+	top_uk_youtubers_2024
 ```
 
 
@@ -209,11 +225,11 @@ FROM
 ### SQL query
 ```
 SELECT 
-	COUNT(*) as column_count
+   COUNT(*) as column_count
 FROM 
-	INFORMATION_SCHEMA.COLUMNS
+   INFORMATION_SCHEMA.COLUMNS
 WHERE 
-	TABLE_NAME = 'view_uk_youtubers_2024'
+   TABLE_NAME = 'view_uk_youtubers_2024'
 ```
 ![Column count check](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/column%20count%20check.png?raw=true)
 
@@ -221,12 +237,12 @@ WHERE
 ### SQL query
 ```
 SELECT 
-	COLUMN_NAME,
-	DATA_TYPE
-FROM 
-	INFORMATION_SCHEMA.COLUMNS
+   COLUMN_NAME,
+   DATA_TYPE
+FROM
+   INFORMATION_SCHEMA.COLUMNS
 WHERE 
-	TABLE_NAME = 'view_uk_youtubers_2024'
+   TABLE_NAME = 'view_uk_youtubers_2024'
 ```
 ![Data type check](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/data%20type%20check.png?raw=true)
 
@@ -234,13 +250,13 @@ WHERE
 ### SQL query
 ```
 SELECT 
-	channel_name, COUNT(*) as duplicate_count
+   channel_name, COUNT(*) as duplicate_count
 FROM 
-	view_uk_youtubers_2024
+   view_uk_youtubers_2024
 GROUP BY 
-	channel_name
+   channel_name
 HAVING 
-	COUNT(*) > 1
+   COUNT(*) > 1
 ```
 ![Duplicate records check](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/duplicate%20records%20check.png?raw=true)
 
