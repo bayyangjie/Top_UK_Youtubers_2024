@@ -176,6 +176,16 @@ FROM
     top_uk_youtubers_2024
 ```
 
+
+### Create the SQL view
+
+```
+
+
+
+```
+
+
 # Testing 
 
 - Data quality checks performed
