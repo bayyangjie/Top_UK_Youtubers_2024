@@ -1,5 +1,7 @@
 # Data Portfolio: Excel to Power BI
 
+![excel-to-powerbi-animated-diagram](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/kaggle_to_powerbi.gif?raw=true)
+
 # Table of contents 
 
 - [Objective](#objective)
