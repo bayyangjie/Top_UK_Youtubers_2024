@@ -188,7 +188,7 @@ FROM
 
 # Testing 
 
-- Data quality checks performed
+Below are the data quality checks performed 
 
 ## Row count check
 ```sql
