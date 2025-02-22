@@ -378,14 +378,14 @@ For this analysis, the priority is analyzing the expected ROI (net profit) for t
 - videos uploaded
 
 
-## Validation checks (SQL/Excel)
+## Net Profit Calculation and Validation (SQL/Excel)
 
 
 ### 1. Youtubers with the most subscribers 
 
 #### Calculation breakdown
 
-Campaign idea = product placement 
+**Campaign idea = product placement** 
 
 1. NoCopyrightSounds 
 
@@ -472,7 +472,7 @@ ORDER BY
 
 #### Calculation breakdown 
 
-Campaign idea = sponsored video series  
+**Campaign idea = sponsored video series**  
 
 1. Boomerang UK
 
@@ -556,7 +556,7 @@ ORDER BY
 
 #### Calculation breakdown
 
-Campaign idea = Influencer marketing 
+**Campaign idea = Influencer marketing**
 
 a. DanTDM
 
@@ -641,4 +641,27 @@ What was discovered
 1. NoCopyRightSounds, Dan Rhodes and DanTDM are the channels with the most subscribers in the UK
 2. Boomerang UK, More Emily and Sing King are the channels with the most uploaded videos
 3. DanTDM, DanRhodes and Mister Max are the channels with the most views
-4. 
+
+# Recommendations
+
+1. NoCopyrightSounds is the best Youtube channel to collaborate with to maximize visibility because it has the most number of subscribers in the UK.
+2. In terms of most active channels with regular video publishing, GRM Daily, Manchester City and Yogcasts are the most active. However, it is worth considering whether collaboration with these channels are worth it because of their negative ROI.
+3. Mister Max may be the best Youtube channel to maximize reach given that it has the highest average views per video. However, collaborating with DanTDM and DanRhodes may be better long term options since they have larger subscriber bases and are also having significantly high number of views on their channels.
+4. DanTDM, DanRhodes and NoCopyRightSounds are the three best channels to do collaboration with due to the high engagement rate (viewership/subscriber base) on their channels.
+
+# Potential ROI
+
+1. Setting up a collaboration deal with Dan Rhodes on the campaign of Product Placement yields the highest net profit of $1,065,000 per video.
+2. An Influence Marketing campaign with Mister Max would yield a net profit of $1,255,000 per video.
+3. A product placement campaign with DanTDM could generate the client approximately $487,000 per video. If we advance with an influencer marketing campaign deal instead, this would make the client a one-off net profit of $407,000.
+4. A product placement campaign with NoCopyRightSounds can return a net profit of $555,000 per video which is worth considering as well.
+
+# Action plan
+
+Based on the overall analysis, the best channel to create a long term partnership with for promoting the client's products is the Dan Rhodes channel. Other channels that can be considered would be the MisterMax, NoCopyRightSounds and DanTDM. 
+
+Steps to be taken with the selected channels:
+1. Reach out to the teams behind each of the selected channels, starting with Dan Rhodes
+2. Negotiate contracts within the budgets allocated to each marketing campaign
+3. Kick off the campaigns with the selected channels and track the campaigns' performances against the KPIs
+4. Review how the campaigns have gone, gather insights and optimize based on feedback from converted customers and each channel's audiences (e.g Profile of audiences, Advertisement reach, Engagement metrics like Click-Through-Rate and View-Through-Rate)
