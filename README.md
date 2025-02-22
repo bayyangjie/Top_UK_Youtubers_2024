@@ -179,7 +179,7 @@ FROM
 
 ### Create the SQL view
 
-```
+```sql
 /*
 # 1. Create a view to store the transformed data
 # 2. Cast the extracted channel name as VARCHAR(100)
@@ -207,6 +207,7 @@ FROM
 Below are the data quality checks performed 
 
 ## Row count check
+
 ```sql
 /*
 # Count the total number of records (or rows) are in the SQL view
@@ -218,12 +219,14 @@ FROM
     view_uk_youtubers_2024;
 
 ```
-
 ![Row count check](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/row%20count%20check.png?raw=true)
 
+
 ## Column count check
+
 ### SQL query
-```
+
+```sql
 SELECT 
    COUNT(*) as column_count
 FROM 
@@ -233,9 +236,12 @@ WHERE
 ```
 ![Column count check](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/column%20count%20check.png?raw=true)
 
+
 ## Data type check
+
 ### SQL query
-```
+
+```sql
 SELECT 
    COLUMN_NAME,
    DATA_TYPE
@@ -246,9 +252,12 @@ WHERE
 ```
 ![Data type check](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/data%20type%20check.png?raw=true)
 
+
 ## Duplicate records check
+
 ### SQL query
-```
+
+```sql
 SELECT 
    channel_name, COUNT(*) as duplicate_count
 FROM 
@@ -260,9 +269,11 @@ HAVING
 ```
 ![Duplicate records check](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/duplicate%20records%20check.png?raw=true)
 
+
 ## DAX Measures
 
 ### 1. Total Subscribers (M)
+
 ``` SQL
 Total Subscriber (M) = 
 VAR million = 1000000
@@ -273,6 +284,7 @@ RETURN totalSubscribers
 ```
 
 ### 2. Total Views (B)
+
 ```SQL
 Total Views (B) = 
  VAR billion = 1000000000
@@ -283,6 +295,7 @@ Total Views (B) =
 ```
 
 ### 3. Total Videos
+
 ```SQL
 Total Videos = 
 VAR totalVideos = SUM(view_uk_youtubers_2024[total_videos])
@@ -291,6 +304,7 @@ RETURN totalVideos
 ```
 
 ### 4. Average Views Per Video (M)
+
 ```SQL
 Avg Views per Video (M) = 
 VAR sumOfTotalViews = SUM(view_uk_youtubers_2024[total_views])
@@ -302,6 +316,7 @@ RETURN finalAvgViewsPerVideo
 ```
 
 ### 5. Subscriber Engagement Rate
+
 ```SQL
 Subscriber Engagement Rate = 
  VAR sumOfTotalSubscribers = SUM(view_uk_youtubers_2024[total_subscribers])
@@ -312,6 +327,7 @@ Subscriber Engagement Rate =
 ```
 
 ### 6. Views per subscriber
+
 ```SQL
 Views per Subscriber = 
  VAR sumOfTotalViews = SUM(view_uk_youtubers_2024[total_views])
@@ -362,7 +378,6 @@ Views per Subscriber =
 
 ### 4. Top 3 channels with highest average views per video
 
-
 | Channel Name | Average Views per Video (M) |
 |--------------|-----------------|
 | 24 News HD   | 346.37          |
@@ -386,7 +401,6 @@ Views per Subscriber =
 | 1    | 24 News HD      | 351,500.00                  |
 | 2    | Slogo	         | 111,458.33                  |
 | 3    | Dua Lipa        | 77,922.08                   |
-
 
 
 ### Notes
