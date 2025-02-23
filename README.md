@@ -19,7 +19,7 @@
   - [Row count check](#row-count-check)
   - [Column count check](#column-count-check)
   - [Data type check](#data-type-check)
-  - [Duplicate records check](#duplicate-records-check_)
+  - [Duplicate records check](#duplicate-records-check)
 - [Visualization](#visualization)
   - [Results](#results)
   - [DAX Measures](#dax-measures)
