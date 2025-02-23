@@ -274,6 +274,13 @@ HAVING
 ```
 ![Duplicate records check](https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/duplicate%20records%20check.png?raw=true)
 
+# Visualization
+
+## Results
+
+Below is how the final dashboard looks like
+
+
 
 ## DAX Measures
 
