@@ -29,7 +29,7 @@
   - [Discovery](#discovery)
 - [Recommendations](#recommendations)
   - [Potential ROI](#potential-roi)
-  - [Potential Courses of Actions](#potential-courses-of-actions)
+  - [Action plan](#Action-plan)
 - [Conclusion](#conclusion)
 
 
