@@ -25,7 +25,7 @@
   - [DAX Measures](#dax-measures)
 - [Analysis](#analysis)
   - [Findings](#findings)
-  - [Validation](#validation)
+  - [Net Profit Calculation and Validation](#Net-Profit-Calculation-and-Validation)
   - [Discovery](#discovery)
 - [Recommendations](#recommendations)
   - [Potential ROI](#potential-roi)
@@ -424,8 +424,13 @@ For this analysis, the priority is analyzing the expected ROI (net profit) for t
 - videos uploaded
 
 
-## Net Profit Calculation and Validation (SQL/Excel)
+## Net Profit Calculation and Validation
 
+A campaign is ran based on each of the measurement metrics mentioned above (i.e Youtube channels with the most subscribers, total views, videos uploaded). The net profits of the top three Youtube channels within each metric are then calculated. 
+
+For each campaign, certain figures are fixed. For example, the product cost which refers to the price of the product placed in the video advertisement, the conversion rate which refers to the rate at which views are converted to products sold and the campaign cost.
+
+The profit calculations are performed in both excel and SQL to validate the figures obtained. 
 
 ### 1. Youtubers with the most subscribers 
 
