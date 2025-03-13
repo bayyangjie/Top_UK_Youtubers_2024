@@ -277,8 +277,10 @@ HAVING
 
 ## Results
 
-Below is how the final dashboard looks like
+Below is what the final dashboard looks like:
+It shows the top UK Youtubers in 2024.
 
+<img src="https://github.com/bayyangjie/Top_UK_Youtubers_2024/blob/main/assets/images/power_bi_record.gif?raw=true" width="1000">
 
 
 ## DAX Measures
